@@ -3,12 +3,32 @@
 
         <div class="form-part1 small-12 large-8 xlarge-7 columns no-padding">
                     
-                    
+                    <?php 
+                    if(!empty(($_GET["first"])))
+                    {
+                        $first = $_GET['first'];
+                        $email = $_GET['email'];
+                    }
+                    else
+                    {
+                        $first = "";
+                        $email = "";
+                    }
             
-                    <input type="text" name="first-name" class="field" placeholder="Segundo nome" required/> <br>
-                            
-                    <input type="email" name="email" class="field" placeholder="E-mail" required/> <br>
-                             
+            
+            
+                    ?>
+            
+                    <input type="text" name="first-name" class="field" <?php printf("value ='$first'"); ?>placeholder="Primeiro nome" required/> <br>
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>        
+                    <input type="email" name="email" class="field" <?php printf("value ='$email'"); ?> placeholder="E-mail" required/> <br>
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>        
                     
 
 
