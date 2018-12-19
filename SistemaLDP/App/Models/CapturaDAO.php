@@ -22,6 +22,7 @@
             
             
         }
+//        public function cadastrar()
         public function alterar($captura){
             
             include '../../Conexao/conexao.php';
@@ -45,7 +46,7 @@
             
             
         }
-//        public function salvar()
+//        public function alterar()
           public function excluir($captura)
           {
             include '../../Conexao/conexao.php';
@@ -67,12 +68,15 @@
           }
 //        public function index()
         
-        
-        
-       
-        
-        
-        
+        public function listarCapturas()
+          {
+            include '../../Conexao/conexao.php';
+	        
+            $sql = "select * from captura order by email;";
+            $result_sql= mysqli_query ($conexao, $sql);
+            return $result_sql;
+          }
+
 
     }
 

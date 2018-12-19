@@ -10,6 +10,10 @@
     public function getCodigo(){
 		return $this->codigo;
 	}
+    
+    public function setCodigo($codigo){
+        $this->codigo = $codigo;
+    }
         
 	public function getNome(){
 		return $this->nome;

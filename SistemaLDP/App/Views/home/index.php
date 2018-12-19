@@ -26,6 +26,7 @@
             
                     ?>
                   
+            
                     <input type="hidden" name="id" class="field" <?php printf("value ='$id'");?> placeholder="Primeiro nome"  required /> <?php if(!empty($nomeErro)): ?>
             <?php echo $nomeErro;?>
             <?php endif;?><br>
@@ -68,6 +69,7 @@
             return $input;
 
         }
+
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         { 
             
@@ -94,6 +96,7 @@
                         echo 'cadastro erro';
                     
                 }
+                
                 else
                 {
                     $controller = new CapturaController();

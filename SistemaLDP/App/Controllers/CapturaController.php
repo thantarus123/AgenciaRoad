@@ -31,7 +31,7 @@
             $result = $dao -> excluir($captura);
             return $result;
        }
-       public function alterar($id,$nome1, $nome2, $email, $data, $cargo)
+       public function alterar($id, $nome1, $nome2, $email, $data, $cargo)
        {
             include '../../Objetos/Captura.php';
             include '../../Models/CapturaDAO.php';
@@ -51,7 +51,12 @@
        }
 //        public function index()
         
-        
+        public function listarCapturas(){
+            include '../../Models/CapturaDAO.php';
+            $dao = new CapturaDAO();
+            $result = $dao -> listarCapturas();
+            return $result;
+        }
         
        
         

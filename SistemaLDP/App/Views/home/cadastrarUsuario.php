@@ -2,13 +2,48 @@
 <form action="" method = "post">
 
         <div class="form-part1 small-12 large-8 xlarge-7 columns no-padding">
+            <?php 
+                    if(!empty(($_GET["id"])))
+                    {
+                        $id = $_GET['id'];
+                        $pnome = $_GET['nomePessoa'];
+                        $unome = $_GET['nomeUsuario'];
+                        $senha = $_GET['senha'];
+                    }
+                    else
+                    {
+                        $id = "";
+                        $pnome = "";
+                        $unome = "";
+                        $senha = "";
+                    }
+            
+            
+            
+                    ?>
+                    <input type="hidden" name="id" class="field" <?php printf("value ='$pnome'");?> placeholder="Primeiro nome"  required /> 
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>    
                     
-                    <input type="text" name="nome" class="field" placeholder="Nome" required/> <br>
+                    <input type="text" name="nome" class="field" <?php printf("value ='$pnome'");?> placeholder="Nome"  required /> 
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>
+                
+                    <input type="text" name="usuario" class="field" <?php printf("value ='$unome'");?> placeholder="Usuário"  required /> 
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>
             
-                    <input type="text" name="usuario" class="field" placeholder="Usuário" required/> <br>
-                            
-            
-                    <input type="password" name="senha" class="field" placeholder="Senha" required/> <br>
+                    <input type="password" name="senha" class="field" <?php printf("value ='$senha'");?> placeholder="Senha"  required /> 
+                    <?php if(!empty($nomeErro)): ?>
+                    <?php echo $nomeErro;?>
+                    <?php endif;?>
+                    <br>
 
 
          </div>
@@ -33,35 +68,33 @@
             
             
             include '../../Controllers/UsuarioController.php';
-            $nome = clean_input($_POST['nome']);
-            $nick = clean_input($_POST['usuario']);
+            $pnome = clean_input($_POST['nome']);
+            $unome = clean_input($_POST['usuario']);
             $senha = clean_input($_POST['senha']);
-    
-            
             $controller = new UsuarioController();
-            
-//            if($idd == null)
-//            {
-                $resultado = $controller -> cadastro($nome,$nick,$senha);
+            if(empty(($_GET['id'])))
+            {
+                $resultado = $controller -> cadastro($pnome,$unome,$senha);
                 if($resultado)
                 {
                     echo 'deu certo';    
                 }
-                    else
+                    else{
                         echo 'erro';
                 }
-//            }
-//            else
-//            {
-//                $resultado = $controller -> alterar($id,$nome,$nick,$senha);
-//                if($resultado)
-//                {
-//                    echo 'deu certo';    
-//                }
-//                    else
-//                        echo 'erro';
-                
-//            }
+            }
+            else{
+                $resultado = $controller -> alterarUsuario($id, $pnome,$unome,$senha);
+                if($resultado)
+                {
+                    echo 'deu certo';    
+                }
+                    else{
+                        echo 'erro';
+                }
+            }
+            
+        }
             
         
             

@@ -1,7 +1,7 @@
 <?php
-    include '../../Controllers/UsuarioController.php';
-    $controller = new UsuarioController();
-    $resultado = $controller-> listarUsuarios();
+    include '../../Controllers/CapturaController.php';
+    $controller = new CapturaController();
+    $resultado = $controller-> listarCapturas();
     echo "<div class='table-wrapper'>";
 			echo " <table>";
 			echo "		<thead>";
@@ -25,7 +25,7 @@
 //					echo "<td> <a class='linkExcluir' href='../Controller/edital_Controller.php?id=".$exibe['codEdital']."&teste=1'><i class='fa fa-close'></i></a></td>";
 echo "<td> <a class='linkExcluir' href='index.php?id=".$exibe['id']."&first=".$exibe['nome1']."&second=".$exibe['nome2']."&email=".$exibe['email']."&data=".$exibe['data']."&cargo=".$exibe['cargo']."'><i class='fa fa-close'></i>
 
-"?>  <img src="../../img/a.png" alt="Imagem de excluir"> <?php echo "
+"?>  <img src="../../img/a.png" alt="Imagem de alterar"> <?php echo "
 </a></td>";
                   
 					
