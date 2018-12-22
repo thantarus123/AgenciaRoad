@@ -63,7 +63,7 @@
             include '../../Objetos/Modelo.php';
             include '../../Models/ModeloDAO.php';
             $modelo = new Modelo();
-            $modelo -> setCodigo($codigo);
+            $modelo -> setCodigo($id);
             $dao = new ModeloDAO();
             $result = $dao ->listarPorId($modelo);
             return $result;

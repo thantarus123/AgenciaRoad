@@ -11,7 +11,7 @@
 
                     
         
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
         { 
             
             
@@ -19,7 +19,8 @@
             $controller = new ModeloController();
             if(empty(($_GET['id'])))
             {
-                $id = $_GET['id']);
+                $id = $_GET['id'];
+                echo "teste";
                 $resultado = $controller -> listarPorId($id);
                 if($resultado)
                 {
