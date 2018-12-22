@@ -19,6 +19,7 @@
             $controller = new ModeloController();
             if(empty(($_GET['id'])))
             {
+                $id = $_GET['id']);
                 $resultado = $controller -> listarPorId($id);
                 if($resultado)
                 {
