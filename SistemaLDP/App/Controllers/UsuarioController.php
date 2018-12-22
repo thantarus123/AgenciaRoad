@@ -18,15 +18,14 @@
             
         }
         //        public function salvar()
-        public function excluir($nome1, $email)
+        public function excluirUsuario($usuarioNM)
         {
-            include '../../Objetos/Captura.php';
-            include '../../Models/CapturaDAO.php';
+            include '../../Objetos/Usuario.php';
+            include '../../Models/UsuarioDAO.php';
             $usuario = new Usuario();
-            $usuario -> setNome1($nome1);
-            $usuario -> setEmail($email);
+            $usuario -> setUsuario($usuarioNM);
             $dao = new UsuarioDAO();
-            $result = $dao -> excluir($usuario);
+            $result = $dao -> excluirUsuario($usuario);
             return $result;
         }
         //        public function excluir()
@@ -53,17 +52,16 @@
 //        public function index()
         
         
-        public function alterarUsuario($codigo, $nome, $nick, $senha)
+        public function alterarUsuario($codigo, $nome, $nick, $unomeComp)
         {
             include '../../Objetos/Usuario.php';
             include '../../Models/UsuarioDAO.php';
             $usuario = new Usuario();
             $usuario -> setNome($nome);
             $usuario -> setUsuario($nick);
-            $usuario -> setSenha($senha);
             $usuario -> setCodigo($codigo);
             $dao = new UsuarioDAO();
-            $result = $dao ->alterarUsuario($usuario);
+            $result = $dao ->alterarUsuario($usuario, $unomeComp);
             return $result;
             
         }

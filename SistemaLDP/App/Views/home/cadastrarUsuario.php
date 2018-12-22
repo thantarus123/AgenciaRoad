@@ -5,17 +5,17 @@
             <?php 
                     if(!empty(($_GET["id"])))
                     {
+                        $tipo = $_GET['tipo'];
                         $id = $_GET['id'];
                         $pnome = $_GET['nomePessoa'];
                         $unome = $_GET['nomeUsuario'];
-                        $senha = $_GET['senha'];
                     }
                     else
                     {
                         $id = "";
                         $pnome = "";
                         $unome = "";
-                        $senha = "";
+                        $tipo = 0;
                     }
             
             
@@ -38,12 +38,17 @@
                     <?php echo $nomeErro;?>
                     <?php endif;?>
                     <br>
+                    <?php
+                        if($tipo!=1){
+                            echo "<input type='password' name='senha' class='field' placeholder='Senha'  required />";
+                            if(!empty($nomeErro)):
             
-                    <input type="password" name="senha" class="field" <?php printf("value ='$senha'");?> placeholder="Senha"  required /> 
-                    <?php if(!empty($nomeErro)): ?>
-                    <?php echo $nomeErro;?>
-                    <?php endif;?>
-                    <br>
+                            echo $nomeErro;
+                            endif;
+                            echo "<br>";
+                        }
+                    ?>
+                    
 
 
          </div>
@@ -70,11 +75,13 @@
             include '../../Controllers/UsuarioController.php';
             $pnome = clean_input($_POST['nome']);
             $unome = clean_input($_POST['usuario']);
-            $senha = clean_input($_POST['senha']);
+            
+            
             $controller = new UsuarioController();
             if(empty(($_GET['id'])))
             {
-                $resultado = $controller -> cadastro($pnome,$unome,$senha);
+                $senha = clean_input($_POST['senha']);
+                $resultado = $controller -> cadastro($pnome, $unome, $senha);
                 if($resultado)
                 {
                     echo 'deu certo';    
@@ -84,7 +91,8 @@
                 }
             }
             else{
-                $resultado = $controller -> alterarUsuario($id, $pnome,$unome,$senha);
+                $unomeComp = $_GET['nomeUsuario'];
+                $resultado = $controller -> alterarUsuario($id, $pnome, $unome, $unomeComp);
                 if($resultado)
                 {
                     echo 'deu certo';    

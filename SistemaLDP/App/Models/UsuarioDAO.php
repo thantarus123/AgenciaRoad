@@ -25,13 +25,13 @@
             }
         }
         //        public function salvar()
-          public function excluir($usuario)
+          public function excluirUsuario($usuario)
           {
             include '../../Conexao/conexao.php';
 	        $nomeUsuario = null;
             $nomeUsuario = $usuario->getUsuario();
-            $sql = "select * from usuarios where NM_Usuario = '$nick';";
-            $query = "delete from usuarios where NM_Usuario = '$nick';";
+            $sql = "select * from usuarios where NM_Usuario = '$nomeUsuario';";
+            $query = "delete from usuarios where NM_Usuario = '$nomeUsuario';";
             $result_sql= mysqli_query ($conexao, $sql);
             if($result_sql->num_rows > 0)
             {
@@ -69,7 +69,7 @@
         
 //        public function index()
         
-        public function alterarUsuario($usuario)
+        public function alterarUsuario($usuario, $unomeComp)
         {
             include '../../Conexao/conexao.php';
             $id = null;
@@ -78,11 +78,21 @@
             $nomePessoa = $usuario->getNome();
             $nomeUsuario = null;
             $nomeUsuario = $usuario->getUsuario();
-            $senhaUsuario = null;
-            $senhaUsuario = $usuario->getSenha();
-            $query = "update usuarios set NM_Pessoa= '$nomePessoa', NM_Usuario = '$nomeUsuario', Senha = '$senhaUsuario' WHERE ID_Usuario = '$id';";
-	        $result_query= mysqli_query ($conexao, $query);
-            return true;
+            $sql = "select * from usuarios where NM_Usuario = '$nomeUsuario';";
+            $query = "update usuarios set NM_Pessoa= '$nomePessoa', NM_Usuario = '$nomeUsuario' WHERE ID_Usuario = '$id';";
+            if(strcmp($nomeUsuario,$unomeComp)!=0){
+                $result_query= mysqli_query ($conexao, $sql);
+                if($result_query->num_rows == 0){
+                    $result= mysqli_query ($conexao, $query);
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                $result= mysqli_query ($conexao, $query);
+                return true;
+            }
+            
         }
        
         
