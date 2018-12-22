@@ -1,4 +1,22 @@
-<input type="text" name="pesquisaUsuario" onkeypress="pesquisarUsuario" placeholder="Digite nome do usuário"/>
+<form action="" method="post">
+    <input type="text" name="nomePesquisa"  placeholder="Digite nome do usuário"/>
+    <input value="Consultar" class="button alt" type="submit">
+</form>
+
+<?php
+    include '../../Controllers/UsuarioController.php';
+    $controller = new UsuarioController();
+    
+    if(!empty($_POST['nomePesquisa'])){
+        $nomePessoa = $_POST['nomePesquisa'];
+        $resultado = $controller-> listarUsuarioNome($nomePessoa);
+    }else{
+        $resultado = $controller-> listarUsuarios();
+    }
+    
+
+?>
+
 <div class="table-wrapper">
     <table>
         <thead>
@@ -10,10 +28,6 @@
         
         <tbody>
             <?php
-                include '../../Controllers/UsuarioController.php';
-                $controller = new UsuarioController();
-                $resultado = $controller-> listarUsuarios();
-                
                 while ($exibe=$resultado->fetch_assoc()){
 				echo "<tr>";
 				echo "<td>".$exibe['NM_Pessoa']."</td> ";
@@ -32,3 +46,9 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    function pesquisarUsuario(v){
+
+    }
+</script>
