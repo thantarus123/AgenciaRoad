@@ -30,23 +30,12 @@
             return $result;
         }
         //        public function excluir()
-        public function verificarLogin($nick, $senha)
-        {
-            include '../../Objetos/Usuario.php';
-            include '../../Models/UsuarioDAO.php';
-            $modelo = new Usuario();
-            $modelo -> setUsuario($nick);
-            $modelo -> setSenha($senha);
-            $dao = new UsuarioDAO();
-            $result = $dao -> verificarLogin($modelo);
-            return $result;
-        }
-        //        public function verificarLogin()
-        public function listarUsuarios()
+        
+        public function listarModelos()
         {
             include '../../Models/UsuarioDAO.php';
-            $dao = new UsuarioDAO();
-            $result = $dao -> listarUsuarios();
+            $dao = new ModeloDAO();
+            $result = $dao -> listarModelos();
             return $result;
         }
         //        public function listarUsuarios()

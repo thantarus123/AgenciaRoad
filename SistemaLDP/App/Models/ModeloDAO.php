@@ -41,28 +41,12 @@
             else
                 return false;
           }
-          public function verificarLogin($usuario)
-          {
-            include '../../Conexao/conexao.php';
-	        $nick = null;
-            $nick = $usuario->getUsuario();
-            $senha = null;
-            $senha = $usuario->getSenha();
-            $sql = "select * from usuarios where NM_Usuario = '$nick' and Senha = '$senha';";
-            $result_sql= mysqli_query ($conexao, $sql);
-            if($result_sql->num_rows > 0)
-            {
-                return true;
-            }
-            else
-                return false;
-          }
           
-          public function listarUsuarios()
+          public function listarModelos()
           {
             include '../../Conexao/conexao.php';
 	        
-            $sql = "select * from usuarios order by NM_Pessoa;";
+            $sql = "select * from modelos order by assunto;";
             $result_sql= mysqli_query ($conexao, $sql);
             return $result_sql;
           }
