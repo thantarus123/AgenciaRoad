@@ -76,6 +76,14 @@
             $result_sql= mysqli_query ($conexao, $sql);
             return $result_sql;
           }
+        public function listarCapturasEmail()
+          {
+            include '../../Conexao/conexao.php';
+	        
+            $sql = "select email,nome1 from captura order by email;";
+            $result_sql= mysqli_query ($conexao, $sql);
+            return $result_sql;
+          }
 
 
     }
