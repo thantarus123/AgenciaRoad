@@ -1,3 +1,4 @@
+<input type="text" name="pesquisaUsuario" onkeypress="pesquisarUsuario" placeholder="Digite nome do usuário"/>
 <div class="table-wrapper">
     <table>
         <thead>
