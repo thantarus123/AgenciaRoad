@@ -9,9 +9,9 @@
             $assuntoModelo = NULL;
             $conteudoModelo = NULL; 
 
-                    
-        
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
+                        
+        print_r($_SERVER['REQUEST_METHOD']);
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
         { 
             
             
@@ -19,7 +19,7 @@
             $controller = new ModeloController();
             if(empty(($_GET['id'])))
             {
-                $id = $_GET['id']);
+                $id = $_GET['id'];
                 $resultado = $controller -> listarPorId($id);
                 if($resultado)
                 {
