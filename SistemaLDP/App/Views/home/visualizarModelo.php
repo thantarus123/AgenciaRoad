@@ -9,33 +9,45 @@
             $assuntoModelo = NULL;
             $conteudoModelo = NULL; 
 
+
+                        
+                    
+        
+
         if($_SERVER['REQUEST_METHOD'] == 'GET')
-                { 
-                    include '../../Controllers/ModeloController.php';
-                    $controller = new ModeloController();
-                    if(!empty(($_GET['id'])))
-                    {
-                        $id = ($_GET['id']);
+        { 
+            
+            
+            include '../../Controllers/ModeloController.php';
+            $controller = new ModeloController();
+            if(empty(($_GET['id'])))
+            {
+                $id = $_GET['id'];
 
 
+               
 
-
-                        $resultado = $controller -> listarPorId($id);
-                        if($resultado)
-                        {
-                            echo 'deu certo';    
-                            while ($exibe=$resultado->fetch_assoc()){
-                               $nomeModelo = $exibe['nome'];
-                               $assuntoModelo = $exibe['assunto'];
-                               $conteudoModelo = $exibe['conteudo'];
-                            }
-
-                        }
-                            else{
-                                echo 'erro';
-                        }
+                $resultado = $controller -> listarPorId($id);
+                if($resultado)
+                {
+                    echo 'deu certo';    
+                    while ($exibe=$resultado->fetch_assoc()){
+                       $nomeModelo = $exibe['nome'];
+                       $assuntoModelo = $exibe['assunto'];
+                       $conteudoModelo = $exibe['conteudo'];
                     }
+                    
+                }
+                    else{
+                        echo 'erro';
+                }
             }
+            
+            
+        }
+            
+        
+            
     ?>
             
             
