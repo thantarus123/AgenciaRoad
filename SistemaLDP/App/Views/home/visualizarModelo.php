@@ -13,7 +13,15 @@
             use PHPMailer\PHPMailer\Exception;
 
 
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
+                { 
+                    include '../../Controllers/ModeloController.php';
+                    $controller = new ModeloController();
+                    if(!empty(($_GET['id'])))
+                    {
+                        $id = ($_GET['id']);
 
+<<<<<<< HEAD
                         
                     
  
@@ -42,10 +50,22 @@
                        $assuntoModelo = $exibe['assunto'];
                        $conteudoModelo = $exibe['conteudo'];
 
+=======
+
+>>>>>>> parent of 0906914... Revert "22/12 - 01:57"
 
 
-               
+                        $resultado = $controller -> listarPorId($id);
+                        if($resultado)
+                        {
+                            echo 'deu certo';    
+                            while ($exibe=$resultado->fetch_assoc()){
+                               $nomeModelo = $exibe['nome'];
+                               $assuntoModelo = $exibe['assunto'];
+                               $conteudoModelo = $exibe['conteudo'];
+                            }
 
+<<<<<<< HEAD
                 $resultado = $controller -> listarPorId($id);
                 if($resultado)
                 {
@@ -56,16 +76,15 @@
                        $conteudoModelo = $exibe['conteudo'];
                         }
                 }
+=======
+                        }
+>>>>>>> parent of 0906914... Revert "22/12 - 01:57"
                             else{
                                 echo 'erro';
                         }
                     }
-                    
-                }
-                    else{
-                        echo 'erro';
-                }
             }
+<<<<<<< HEAD
             
             
         }
@@ -174,6 +193,8 @@
             
                         
 
+=======
+>>>>>>> parent of 0906914... Revert "22/12 - 01:57"
     ?>
             
             
