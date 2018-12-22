@@ -74,10 +74,10 @@
             include '../../Conexao/conexao.php';
              
             $id = null;
-            $id = $modelo -> getCodigo($codigo);
+            $id = $modelo -> getCodigo();
             
              $query = "select * from modelos where id = '$id'";
-             $result_sql = mysqli_query($conexao, $sql);
+             $result_sql = mysqli_query($conexao, $query);
             return $result_sql;
         }
         
