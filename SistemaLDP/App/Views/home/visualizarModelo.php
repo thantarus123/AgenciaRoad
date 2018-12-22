@@ -15,7 +15,7 @@
 
                         
                     
-        
+         print_r($_SERVER['REQUEST_METHOD']);
 
         if($_SERVER['REQUEST_METHOD'] == 'GET')
         { 
