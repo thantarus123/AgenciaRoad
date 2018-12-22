@@ -57,6 +57,12 @@
             $result = $dao -> listarCapturas();
             return $result;
         }
+        public function listarCapturasEmail(){
+            include '../../Models/CapturaDAO.php';
+            $dao = new CapturaDAO();
+            $result = $dao -> listarCapturasEmail();
+            return $result;
+        }
         
        
         
