@@ -13,11 +13,11 @@
             use PHPMailer\PHPMailer\Exception;
 
 
-                        
-                    
-         print_r($_SERVER['REQUEST_METHOD']);
+
 
         if($_SERVER['REQUEST_METHOD'] == 'GET')
+
+
         { 
             
             $id = NULL;
@@ -28,11 +28,8 @@
             $controller = new ModeloController();
             if(!empty(($_GET['id'])))
             {
+    
                 $id = $_GET['id'];
-
-
-               
-
                 $resultado = $controller -> listarPorId($id);
                 if($resultado)
                 {
