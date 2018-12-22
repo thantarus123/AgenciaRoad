@@ -33,7 +33,7 @@
         
         public function listarModelos()
         {
-            include '../../Models/UsuarioDAO.php';
+            include '../../Models/ModeloDAO.php';
             $dao = new ModeloDAO();
             $result = $dao -> listarModelos();
             return $result;
@@ -58,7 +58,16 @@
         }
        
         
-        
+        public function listarPorId($id)
+        {
+            include '../../Objetos/Modelo.php';
+            include '../../Models/ModeloDAO.php';
+            $modelo = new Modelo();
+            $modelo -> setCodigo($codigo);
+            $dao = new ModeloDAO();
+            $result = $dao ->listarPorId($modelo);
+            return $result;
+        }
         
 
     }

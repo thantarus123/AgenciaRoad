@@ -95,13 +95,14 @@
             
         }
        
-        public function listarUsuarioNome($nome){
+        /*public function listarUsuarioNome($nome){
             include '../../Conexao/conexao.php';
             $nomePesquisa = null;
             $nomePesquisa = $nome;
-            $sql = "select * from usuarios where NM_Usuario like "$nome%"";
-            mysqli_query($conexao,$sql)
-        }
+            $sql = "select * from usuarios where NM_Usuario like '$nome%'";
+            $result = mysqli_query($conexao,$sql)
+            return true;
+        }*/
         
         
         

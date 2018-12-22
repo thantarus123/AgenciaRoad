@@ -69,7 +69,17 @@
             return true;
         }
        
-        
+         public function listarPorId($modelo)
+        {
+            include '../../Conexao/conexao.php';
+             
+            $id = null;
+            $id = $modelo -> getCodigo($codigo);
+            
+             $query = "select * from modelos where id = '$id'";
+             $result_sql = mysqli_query($conexao, $sql);
+            return $result_sql;
+        }
         
         
 

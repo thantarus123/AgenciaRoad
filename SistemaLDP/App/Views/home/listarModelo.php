@@ -10,20 +10,23 @@
         
         <tbody>
             <?php
-                include '../../Controllers/UsuarioController.php';
-                $controller = new UsuarioController();
-                $resultado = $controller-> listarUsuarios();
+                include '../../Controllers/ModeloController.php';
+                $controller = new ModeloController();
+                $resultado = $controller-> listarModelos();
                 
                 while ($exibe=$resultado->fetch_assoc()){
 				echo "<tr>";
-				echo "<td>".$exibe['NM_Pessoa']."</td> ";
-				echo "<td>".$exibe['NM_Usuario']."</td> ";
-                if($exibe['ID_Usuario'] != null){
+				echo "<td>".$exibe['nome']."</td> ";
+				echo "<td>".$exibe['assunto']."</td> ";
+                if($exibe['id'] != null){
                     
-					echo "<td> <a class='linkAlterar' href='cadastrarUsuario.php?id=".$exibe['ID_Usuario']."&nomePessoa=".$exibe['NM_Pessoa']."&nomeUsuario=".$exibe['NM_Usuario']."&tipo=".(1)."'><i class='fa fa-close'></i>"?>  <img src="../../img/a.png" alt="Imagem de alterar"> <?php echo "
+					echo "<td> <a class='linkAlterar' href='cadastrarModelo.php?id=".$exibe['id']."&nome=".$exibe['nome']."&assunto=".$exibe['assunto']."&conteudo=".$exibe['conteudo']."'><i class='fa fa-close'></i>"?>  <img src="../../img/a.png" alt="Imagem de alterar"> <?php echo "
                     </a></td>";
                     
-                    echo "<td> <a class='linkExcluir' href='excluirUsuario.php?nomeUsuario=".$exibe['NM_Usuario']."'><i class='fa fa-close'></i>"?>  <img src="../../img/trash.png" alt="Imagem de Excluir"> <?php echo "
+                    /*echo "<td> <a class='linkExcluir' href='excluirModelo.php?nomeUsuario=".$exibe['NM_Usuario']."'><i class='fa fa-close'></i>"?>  <img src="../../img/trash.png" alt="Imagem de Excluir"> <?php echo "
+                    </a></td>";*/
+                    
+                    echo "<td> <a class='linkVisualizar' href='visualizarModelo.php?id=".$exibe['id']."'><i class='fa fa-close'></i>"?>  <img src="../../img/trash.png" alt="Imagem de Excluir"> <?php echo "
                     </a></td>";
                 }
 				echo "</tr>";	
