@@ -66,7 +66,15 @@
             
         }
        
-        
+        public function listarUsuarioNome($nome){
+            include '../../Objetos/Usuario.php';
+            include '../../Models/UsuarioDAO.php';
+            $usuario = new Usuario();
+            $usuario -> setNome($nome);
+            $dao = new UsuarioDAO();
+            $result = $dao ->listarUsuarioNome($usuario);
+            return $result;
+        }
         
         
 

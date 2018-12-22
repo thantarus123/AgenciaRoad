@@ -13,6 +13,14 @@
             use PHPMailer\PHPMailer\Exception;
 
 
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
+                { 
+                    include '../../Controllers/ModeloController.php';
+                    $controller = new ModeloController();
+                    if(!empty(($_GET['id'])))
+                    {
+                        $id = ($_GET['id']);
+
 
 
         if($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -38,13 +46,27 @@
                        $nomeModelo = $exibe['nome'];
                        $assuntoModelo = $exibe['assunto'];
                        $conteudoModelo = $exibe['conteudo'];
+
+
+
+                        $resultado = $controller -> listarPorId($id);
+                        if($resultado)
+                        {
+                            echo 'deu certo';    
+                            while ($exibe=$resultado->fetch_assoc()){
+                               $nomeModelo = $exibe['nome'];
+                               $assuntoModelo = $exibe['assunto'];
+                               $conteudoModelo = $exibe['conteudo'];
+                            }
+
+                        }
+                            else{
+                                echo 'erro';
+                        }
+
                     }
-                    
-                }
-                    else{
-                        echo 'erro';
-                }
             }
+
             
             
         }
@@ -152,6 +174,7 @@
                         }
             
                         
+
     ?>
             
             
