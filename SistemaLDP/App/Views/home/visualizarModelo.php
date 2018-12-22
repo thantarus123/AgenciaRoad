@@ -55,6 +55,7 @@
                        $assuntoModelo = $exibe['assunto'];
                        $conteudoModelo = $exibe['conteudo'];
                         }
+                }
                             else{
                                 echo 'erro';
                         }
